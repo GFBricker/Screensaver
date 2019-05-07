@@ -38,22 +38,108 @@
  * http://www.arduino.cc/en/Tutorial/Blink
  */
 
-#include <MeggyJrSimple.h>    // Required code, line 1 of 2.
+#include <MeggyJrSimple.h> 
 
-void setup()                    // run once, when the sketch starts
+int color;
+void setup()             
 {
-  MeggyJrSimpleSetup();      // Required code, line 2 of 2.
+  MeggyJrSimpleSetup();
+  color=1;
 }
 
-void loop()                     // run over and over again
+void loop()                    
 {
-  
-  DrawPx(3,4,Yellow);           // Draw a dot at x=3, y=4, in yellow.
-  DisplaySlate();                  // Write the drawing to the screen.
-  delay(1000);                  // waits for a second
-  
-  ClearSlate();                 // Erase drawing
-  DisplaySlate();                  // Write the (now empty) drawing to the screen.
-   
-  delay(1000);                  // waits for a second
+ R1();
+ DisplaySlate();
+ delay(150);
+ color++;
+ R2();
+ DisplaySlate();
+ delay(150);
+ color++;
+ R3();
+ DisplaySlate();
+ delay(150);
+ color++;
+ R4();
+ DisplaySlate();
+ delay(150);
+ color++;
+ R4();
+ DisplaySlate();
+ delay(150);
+ color++;
+ R3();
+ DisplaySlate();
+ delay(150);
+ color++;
+ R2();
+ DisplaySlate();
+ delay(150);
+ color++;
+ R1();
+ DisplaySlate();
+ delay(150);
+ color++;
+}
+
+
+void R1()
+{
+  if (color == 15)
+ {
+  color=1;
+ }
+  DrawPx(3,3,color);
+  DrawPx(4,3,color);
+  DrawPx(4,4,color);
+  DrawPx(3,4,color);
+}
+
+void R2()
+{
+  if (color == 15)
+ {
+  color=1;
+ }
+  DrawPx(2,2,color);
+  DrawPx(2,3,color);
+  DrawPx(2,4,color);
+  DrawPx(2,5,color);
+  DrawPx(3,2,color);
+  DrawPx(3,5,color);
+  DrawPx(4,2,color);
+  DrawPx(4,5,color);
+  DrawPx(5,2,color);
+  DrawPx(5,3,color);
+  DrawPx(5,4,color);
+  DrawPx(5,5,color);
+}
+void R3()
+{
+  if (color == 15)
+ {
+  color=1;
+ }
+  for (int i=1;i<7;i++)
+  {
+    DrawPx(1,i,color);
+    DrawPx(6,i,color);
+    DrawPx(i,1,color);
+    DrawPx(i,6,color);
+  }
+}
+void R4()
+{
+  if (color == 15)
+ {
+  color=1;
+ }
+  for (int i=0;i<8;i++)
+  {
+    DrawPx(0,i,color);
+    DrawPx(7,i,color);
+    DrawPx(i,0,color);
+    DrawPx(i,7,color);
+  }
 }
